@@ -91,7 +91,7 @@ public class JaxwsClientTest {
 
     private void dynamicClient() throws Exception {
         JaxWsDynamicClientFactory jaxWsDynamicClientFactory = JaxWsDynamicClientFactory.newInstance();
-        Client client = jaxWsDynamicClientFactory.createClient("http://localhost:8080/cxf/services/jaxws_helloworld?wsdl");
+        Client client = jaxWsDynamicClientFactory.createClient("http://localhost:8080/cxf_example/services/jaxws_service?wsdl");
         Object[] getUserses = client.invoke("getUsers");
         for(Object obj : getUserses) {
             Method method = obj.getClass().getMethod("getEntry");
