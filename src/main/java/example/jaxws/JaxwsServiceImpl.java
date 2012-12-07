@@ -3,7 +3,7 @@ package example.jaxws;
 import example.model.IntegerUserEntry;
 import example.model.IntegerUserMap;
 import example.model.User;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
