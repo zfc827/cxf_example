@@ -16,6 +16,8 @@ public class JAXBTest {
 
     private IntegerUserMap integerUserMap;
 
+    private ResponseType<User> responseType;
+
     private JAXBContext jaxbContext;
 
     private Marshaller marshaller;
@@ -32,7 +34,9 @@ public class JAXBTest {
             integerUserMap.getEntries().add(integerUserEntry);
         }
 
-        jaxbContext = JAXBContext.newInstance(User.class, IntegerUserMap.class);
+        responseType = new ResponseType<User>(0, "this is error message...", user);
+
+        jaxbContext = JAXBContext.newInstance(User.class, IntegerUserMap.class, ResponseType.class);
         marshaller = jaxbContext.createMarshaller();
     }
 
@@ -46,5 +50,11 @@ public class JAXBTest {
     public void testBuildUserMapXML() throws JAXBException {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(integerUserMap, System.out);
+    }
+
+    @Test
+    public void testBuildResponseTypeXml() throws JAXBException {
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(responseType, System.out);
     }
 }

@@ -3,6 +3,7 @@ package example.jaxws;
 import example.jaxws.xmladapter.IntegerUserMapAdapter;
 import example.model.IntegerUserEntry;
 import example.model.IntegerUserMap;
+import example.model.ResponseType;
 import example.model.User;
 
 import javax.jws.WebService;
@@ -20,4 +21,6 @@ public interface JaxwsService {
 
     @XmlJavaTypeAdapter(IntegerUserMapAdapter.class)
     Map<Integer, User> getUsers();
+
+    ResponseType<User> getResponseUser(String userName);
 }

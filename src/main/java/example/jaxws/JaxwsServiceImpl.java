@@ -2,6 +2,7 @@ package example.jaxws;
 
 import example.model.IntegerUserEntry;
 import example.model.IntegerUserMap;
+import example.model.ResponseType;
 import example.model.User;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
@@ -38,5 +39,10 @@ public class JaxwsServiceImpl implements JaxwsService {
     public Map<Integer, User> getUsers() {
         logger.info("getUsers called, users.size = {}", users.size());
         return users;
+    }
+
+    @Override
+    public ResponseType<User> getResponseUser(String userName) {
+        return new ResponseType<User>(0, "error message by " + userName, new User(userName));
     }
 }
