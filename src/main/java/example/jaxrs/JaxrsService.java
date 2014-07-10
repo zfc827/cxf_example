@@ -34,11 +34,26 @@ public class JaxrsService {
 
     @GET
     @Path(value = "/search/json/{userName}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     public IntegerUserEntry getUser(@PathParam("userName") String userName) {
         logger.info("getUser called, name = {}", userName);
         IntegerUserEntry integerUserEntry = new IntegerUserEntry();
-        integerUserEntry.setUser(new User(userName));
+        integerUserEntry.setUser(new User("测试中文"));
         return integerUserEntry;
     }
+
+    @GET
+    @Path(value = "/resource/json")
+    @Produces("application/json;charset=UTF-8")
+    public String json() {
+        return "{ \"user\": {\"id\": 1,\"name\": \"姓名\"}}";
+    }
+
+    @GET
+    @Path(value = "/resource/xml")
+    @Produces("application/xml;charset=UTF-8")
+    public String xml() {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><integerUserMap><entry><id>0</id><user><name>测试中文</name></user></entry><entry><id>1</id><user><name>测试中文</name></user></entry><entry><id>2</id><user><name>testUser2</name></user></entry></integerUserMap>";
+    }
+
 }

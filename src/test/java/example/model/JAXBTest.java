@@ -48,7 +48,7 @@ public class JAXBTest {
 
     @Test
     public void testBuildUserMapXML() throws JAXBException {
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        //marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(integerUserMap, System.out);
     }
 
